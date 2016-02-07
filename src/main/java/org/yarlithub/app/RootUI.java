@@ -22,8 +22,12 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import org.yarlithub.domain.Person;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.annotation.WebServlet;
+import java.util.Date;
 
 @Title("Yarl IT Hub - Talent Database")
 @Theme("mytheme")
@@ -32,6 +36,23 @@ public class RootUI extends UI {
 
     public static final String PERSISTENCE_UNIT = "yarlithub";
 
+    static{
+        EntityManager em = Persistence
+                .createEntityManagerFactory(PERSISTENCE_UNIT)
+                .createEntityManager();
+
+
+        em.getTransaction().begin();
+
+
+        Person p = new Person();
+        p.setFullName("Hello");
+        p.setJoinedDate(new Date());
+        p.setEmail("hello@gmail.com");
+        em.persist(p);
+
+        em.getTransaction().commit();
+    }
     @Override
     protected void init(VaadinRequest request) {
         setContent(new MainAppView());

@@ -40,7 +40,7 @@ public class PersonEditor extends VerticalLayout {
                 Notification.show(
                         "Changes Saved for:<br/> "
                                 + "Full Name " + " = *"
-                                + personItem.getItemProperty("fullName")
+                                + personItem.getItemProperty("fullName").getValue()
                                 + "*<br/>.",
                         Notification.Type.TRAY_NOTIFICATION);
 
@@ -59,7 +59,7 @@ public class PersonEditor extends VerticalLayout {
             Notification.show(
                     "Changes Discarded for:<br/> "
                             + "Full Name" + " = *"
-                            + personItem.getItemProperty("fullName")
+                            + personItem.getItemProperty("fullName").getValue()
                             + "*<br/>.",
                     Notification.Type.TRAY_NOTIFICATION);
         });
@@ -81,6 +81,7 @@ public class PersonEditor extends VerticalLayout {
         affiliation.setNullRepresentation("");
         TextArea description = new TextArea("Description");
         description.setNullRepresentation("");
+        DateField joinedDate = new DateField("Joined Date");
 
         binder.bind(fullName, "fullName");
         binder.bind(phoneNumber, "phoneNumber");
@@ -89,11 +90,12 @@ public class PersonEditor extends VerticalLayout {
         binder.bind(profession, "profession");
         binder.bind(affiliation, "affiliation");
         binder.bind(description, "description");
+        binder.bind(joinedDate, "joinedDate");
 
         fullName.addValidator(new BeanValidator(Person.class, "fullName"));
         email.addValidator(new BeanValidator(Person.class, "email"));
 
-        form.addComponents(fullName, phoneNumber, email, profession, address, affiliation, description);
+        form.addComponents(fullName, phoneNumber, email, profession, affiliation, joinedDate, address, description);
 
         HorizontalLayout footer = new HorizontalLayout(saveButton, cancelButton);
         footer.setSpacing(true);

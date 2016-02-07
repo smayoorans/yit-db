@@ -1,7 +1,9 @@
 package org.yarlithub.ui;
 
 
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.yarlithub.domain.SearchFilter;
 import org.yarlithub.app.MainAppView;
 
@@ -38,7 +40,9 @@ public class SearchView extends Panel {
         saveSearch = new CheckBox("Save search");
         searchName = new TextField("Search name");
         searchName.setVisible(false);
-        Button search = new Button("Search");
+        Button searchButton = new Button("Search");
+        searchButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+        searchButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
         /* Initialize fieldToSearch */
         for (int i = 0; i < MainAppView.NATURAL_COLUMNS.length; i++) {
@@ -60,7 +64,7 @@ public class SearchView extends Panel {
         });
         saveSearch.addValueChangeListener(event -> searchName.setVisible(saveSearch.getValue()));
 
-        search.addClickListener(event -> performSearch());
+        searchButton.addClickListener(event -> performSearch());
 
         /* Add all the created components to the form */
         VerticalLayout layout = new VerticalLayout();
@@ -71,7 +75,7 @@ public class SearchView extends Panel {
         layout.addComponent(fieldToSearch);
         layout.addComponent(saveSearch);
         layout.addComponent(searchName);
-        layout.addComponent(search);
+        layout.addComponent(searchButton);
 
         setContent(layout);
 
