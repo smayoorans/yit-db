@@ -29,14 +29,14 @@ import javax.servlet.annotation.WebServlet;
 
 @Title("Yarl IT Hub - Talent Database")
 @Theme("mytheme")
-@Widgetset("org.madrona.MyAppWidgetset")
+@Widgetset("org.yarlithub.MyAppWidgetset")
 public class JpaAddressbookUI extends UI {
 
-    public static final String PERSISTENCE_UNIT = "addressbook";
+    public static final String PERSISTENCE_UNIT = "yarlithub";
 
     static {
         EntityManager em = Persistence
-                .createEntityManagerFactory("addressbook")
+                .createEntityManagerFactory("yarlithub")
                 .createEntityManager();
     }
     @Override
