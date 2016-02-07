@@ -1,16 +1,15 @@
-package org.yarlithub.addressbook.ui;
+package org.yarlithub.ui;
 
 
 import com.vaadin.ui.Tree;
-import org.yarlithub.addressbook.YITApplication;
-import org.yarlithub.app.AddressBookMainView;
+import org.yarlithub.app.MainAppView;
 
 @SuppressWarnings("serial")
 public class NavigationTree extends Tree {
     public static final Object SHOW_ALL = "Show all";
     public static final Object SEARCH = "Search";
 
-    public NavigationTree(AddressBookMainView app) {
+    public NavigationTree(MainAppView app) {
         addItem(SHOW_ALL);
         addItem(SEARCH);
 

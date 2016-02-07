@@ -1,4 +1,4 @@
-package org.yarlithub.app;
+package org.yarlithub.ui;
 
 import com.vaadin.ui.*;
 

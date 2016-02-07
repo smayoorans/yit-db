@@ -12,13 +12,16 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
-import org.yarlithub.addressbook.data.SearchFilter;
-import org.yarlithub.addressbook.ui.NavigationTree;
-import org.yarlithub.addressbook.ui.SearchView;
+import org.yarlithub.domain.Person;
+import org.yarlithub.domain.SearchFilter;
+import org.yarlithub.ui.HelpWindow;
+import org.yarlithub.ui.NavigationTree;
+import org.yarlithub.ui.PersonEditor;
+import org.yarlithub.ui.SearchView;
 
-public class AddressBookMainView extends VerticalLayout implements ComponentContainer, ItemClickEvent.ItemClickListener {
+public class MainAppView extends VerticalLayout implements ComponentContainer, ItemClickEvent.ItemClickListener {
 
-    public static final Logger logger = LoggerFactory.getLogger(AddressBookMainView.class);
+    public static final Logger logger = LoggerFactory.getLogger(MainAppView.class);
 
     public static final String[] COL_HEADERS_ENGLISH = new String[]{"Full Name", "Phone Number", "Email", "Profession", "Affiliation"};
 
@@ -39,8 +42,8 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
     private HelpWindow helpWindow = null;
     private SearchView searchView = null;
 
-    public AddressBookMainView() {
-        persons = JPAContainerFactory.make(Person.class, JpaAddressbookUI.PERSISTENCE_UNIT);
+    public MainAppView() {
+        persons = JPAContainerFactory.make(Person.class, RootUI.PERSISTENCE_UNIT);
         buildMainArea();
     }
 

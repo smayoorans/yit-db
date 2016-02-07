@@ -1,4 +1,4 @@
-package org.yarlithub.addressbook.data;
+package org.yarlithub.domain;
 
 import java.io.Serializable;
 

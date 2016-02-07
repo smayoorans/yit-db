@@ -1,4 +1,4 @@
-package org.yarlithub.app;
+package org.yarlithub.ui;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.fieldgroup.FieldGroup;
@@ -8,6 +8,7 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.yarlithub.domain.Person;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;

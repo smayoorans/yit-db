@@ -23,29 +23,22 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.annotation.WebServlet;
 
 @Title("Yarl IT Hub - Talent Database")
 @Theme("mytheme")
 @Widgetset("org.yarlithub.MyAppWidgetset")
-public class JpaAddressbookUI extends UI {
+public class RootUI extends UI {
 
     public static final String PERSISTENCE_UNIT = "yarlithub";
 
-    static {
-        EntityManager em = Persistence
-                .createEntityManagerFactory("yarlithub")
-                .createEntityManager();
-    }
     @Override
     protected void init(VaadinRequest request) {
-        setContent(new AddressBookMainView());
+        setContent(new MainAppView());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = JpaAddressbookUI.class, productionMode = false)
+    @VaadinServletConfiguration(ui = RootUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
 
     }

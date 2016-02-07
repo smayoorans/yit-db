@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.yarlithub.app;
+package org.yarlithub.domain;
 
 import org.hibernate.validator.constraints.Email;
 

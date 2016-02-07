@@ -1,9 +1,9 @@
-package org.yarlithub.addressbook.ui;
+package org.yarlithub.ui;
 
 
 import com.vaadin.ui.*;
-import org.yarlithub.addressbook.data.SearchFilter;
-import org.yarlithub.app.AddressBookMainView;
+import org.yarlithub.domain.SearchFilter;
+import org.yarlithub.app.MainAppView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ public class SearchView extends Panel {
     private NativeSelect fieldToSearch;
     private CheckBox saveSearch;
     private TextField searchName;
-    private AddressBookMainView app;
+    private MainAppView app;
 
-    public SearchView(final AddressBookMainView app) {
+    public SearchView(final MainAppView app) {
         this.app = app;
         addStyleName("view");
 
@@ -41,9 +41,9 @@ public class SearchView extends Panel {
         Button search = new Button("Search");
 
         /* Initialize fieldToSearch */
-        for (int i = 0; i < AddressBookMainView.NATURAL_COLUMNS.length; i++) {
-            fieldToSearch.addItem(AddressBookMainView.NATURAL_COLUMNS[i]);
-            fieldToSearch.setItemCaption(AddressBookMainView.NATURAL_COLUMNS[i], AddressBookMainView.COL_HEADERS_ENGLISH[i]);
+        for (int i = 0; i < MainAppView.NATURAL_COLUMNS.length; i++) {
+            fieldToSearch.addItem(MainAppView.NATURAL_COLUMNS[i]);
+            fieldToSearch.setItemCaption(MainAppView.NATURAL_COLUMNS[i], MainAppView.COL_HEADERS_ENGLISH[i]);
         }
         fieldToSearch.setValue("firstName");
         fieldToSearch.setNullSelectionAllowed(false);
