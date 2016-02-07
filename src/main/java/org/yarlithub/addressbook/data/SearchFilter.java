@@ -1,4 +1,4 @@
-package org.madrona.addressbook.data;
+package org.yarlithub.addressbook.data;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.madrona.model;
+package org.yarlithub.model;
 
 import org.apache.commons.beanutils.BeanUtils;
 

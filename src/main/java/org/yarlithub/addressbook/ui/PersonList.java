@@ -1,4 +1,4 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 
 import com.vaadin.server.ExternalResource;
@@ -6,8 +6,8 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Table;
-import org.madrona.addressbook.YITApplication;
-import org.madrona.addressbook.data.DatabaseHelper;
+import org.yarlithub.addressbook.YITApplication;
+import org.yarlithub.addressbook.data.DatabaseHelper;
 
 @SuppressWarnings("serial")
 public class PersonList extends Table {

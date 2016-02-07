@@ -1,4 +1,4 @@
-package org.madrona.addressbook.data;
+package org.yarlithub.addressbook.data;
 
 import com.vaadin.data.util.sqlcontainer.SQLContainer;
 import com.vaadin.data.util.sqlcontainer.connection.JDBCConnectionPool;

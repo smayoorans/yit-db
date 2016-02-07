@@ -1,11 +1,11 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 import com.vaadin.data.util.sqlcontainer.SQLContainer;
 
 import com.vaadin.ui.*;
-import org.madrona.addressbook.YITApplication;
-import org.madrona.addressbook.data.DatabaseHelper;
-import org.madrona.addressbook.data.SearchFilter;
+import org.yarlithub.addressbook.YITApplication;
+import org.yarlithub.addressbook.data.DatabaseHelper;
+import org.yarlithub.addressbook.data.SearchFilter;
 
 import java.util.ArrayList;
 import java.util.List;

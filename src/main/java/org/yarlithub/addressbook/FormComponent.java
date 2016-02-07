@@ -1,4 +1,4 @@
-package org.madrona.addressbook;
+package org.yarlithub.addressbook;
 
 import com.vaadin.ui.*;
 

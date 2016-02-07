@@ -1,4 +1,4 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 import com.vaadin.data.Buffered;
 import com.vaadin.data.Item;
@@ -7,12 +7,11 @@ import com.vaadin.data.util.sqlcontainer.RowId;
 import com.vaadin.data.util.sqlcontainer.query.QueryDelegate;
 import com.vaadin.data.util.sqlcontainer.query.QueryDelegate.RowIdChangeEvent;
 import com.vaadin.data.validator.EmailValidator;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import org.madrona.addressbook.YITApplication;
-import org.madrona.addressbook.data.DatabaseHelper;
+import org.yarlithub.addressbook.YITApplication;
+import org.yarlithub.addressbook.data.DatabaseHelper;
 
 import java.sql.SQLException;
 import java.util.Arrays;

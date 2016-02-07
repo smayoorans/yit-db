@@ -1,12 +1,13 @@
-package jpaaddressbook;
+package org.yarlithub.app;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.validator.BeanValidator;
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.ui.*;
-import jpaaddressbook.domain.Person;
+import com.vaadin.ui.themes.ValoTheme;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -19,9 +20,7 @@ public class PersonEditor extends VerticalLayout {
     private FieldGroup binder;
     private FormLayout form;
 
-
     public PersonEditor(Item personItem) {
-//        setModal(true);
         setWidth("400px");
         this.personItem = personItem;
         form = new FormLayout();
@@ -39,6 +38,9 @@ public class PersonEditor extends VerticalLayout {
                 e.printStackTrace();
             }
         });
+
+        saveButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+        saveButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
         Button cancelButton = new Button("Cancel", event -> {
             binder.discard();

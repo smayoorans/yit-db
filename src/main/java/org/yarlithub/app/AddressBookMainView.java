@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jpaaddressbook;
+package org.yarlithub.app;
 
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
@@ -22,7 +22,6 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
-import jpaaddressbook.domain.Person;
 
 public class AddressBookMainView extends VerticalLayout implements ComponentContainer {
 

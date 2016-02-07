@@ -1,22 +1,16 @@
-package org.madrona;
+package org.yarlithub;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
-import jpaaddressbook.JpaAddressbookUI;
-import org.madrona.addressbook.YITApplication;
-import org.madrona.model.Contact;
-import org.madrona.ui.ContactForm;
-
-import javax.servlet.annotation.WebServlet;
+import org.yarlithub.model.Contact;
+import org.yarlithub.ui.ContactForm;
 
 /**
  * Main Root UI

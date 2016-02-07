@@ -1,12 +1,12 @@
-package org.madrona.ui;
+package org.yarlithub.ui;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import org.madrona.model.Contact;
-import org.madrona.MainUI;
+import org.yarlithub.model.Contact;
+import org.yarlithub.MainUI;
 
 public class ContactForm extends FormLayout{
 

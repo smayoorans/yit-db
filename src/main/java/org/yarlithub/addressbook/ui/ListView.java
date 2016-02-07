@@ -1,4 +1,4 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 
 import com.vaadin.ui.VerticalSplitPanel;

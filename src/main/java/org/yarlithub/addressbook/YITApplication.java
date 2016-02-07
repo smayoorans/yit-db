@@ -1,4 +1,4 @@
-package org.madrona.addressbook;
+package org.yarlithub.addressbook;
 
 
 import com.vaadin.annotations.Theme;
@@ -20,12 +20,11 @@ import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.FontAwesome;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
-import org.madrona.addressbook.data.DatabaseHelper;
-import org.madrona.addressbook.data.SearchFilter;
-import org.madrona.addressbook.ui.*;
+import org.yarlithub.addressbook.data.DatabaseHelper;
+import org.yarlithub.addressbook.data.SearchFilter;
+import org.yarlithub.addressbook.ui.*;
 
 @SuppressWarnings("serial")
 @Title("Yarl IT Hub - Talent Database")

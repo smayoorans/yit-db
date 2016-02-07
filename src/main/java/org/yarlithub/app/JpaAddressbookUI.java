@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jpaaddressbook;
+package org.yarlithub.app;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;

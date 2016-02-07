@@ -1,7 +1,7 @@
-package org.madrona;
+package org.yarlithub;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.madrona.model.Contact;
+import org.yarlithub.model.Contact;
 
 import java.util.*;
 import java.util.logging.Level;

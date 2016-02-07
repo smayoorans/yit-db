@@ -1,4 +1,4 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Label;

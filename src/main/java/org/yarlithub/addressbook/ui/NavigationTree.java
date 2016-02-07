@@ -1,8 +1,8 @@
-package org.madrona.addressbook.ui;
+package org.yarlithub.addressbook.ui;
 
 
 import com.vaadin.ui.Tree;
-import org.madrona.addressbook.YITApplication;
+import org.yarlithub.addressbook.YITApplication;
 
 @SuppressWarnings("serial")
 public class NavigationTree extends Tree {
