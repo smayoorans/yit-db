@@ -1,0 +1,171 @@
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+//$v-font-size: 16px;
+//$v-font-weight: 300;
+//$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+$v-app-loading-text: "Loading....";
+
+$v-font-family: "Source Sans Pro", sans-serif;
+$v-app-background-color: #fff;
+$v-background-color: #eee;
+$v-focus-color: #0072C6;
+$v-focus-style: 0 0 0 1px $v-focus-color;
+$valo-menu-background-color: darken($v-focus-color, 10%);
+$v-border: 1px solid v-shade;
+$v-border-radius: 0px;
+$v-bevel: false;
+$v-gradient: false;
+$v-shadow: false;
+$v-textfield-bevel: false;
+$v-textfield-shadow: false;
+$v-textfield-border: 1px solid v-shade;
+$v-link-text-decoration: none;
+$v-overlay-shadow: 0 0 0 2px #000;
+$v-overlay-border-width: 2px; // For IE8
+$v-window-shadow: $v-overlay-shadow;
+$v-selection-overlay-background-color: #fff;
+$v-selection-overlay-padding-horizontal: 0;
+$v-selection-overlay-padding-vertical: 6px;
+$v-panel-border: 2px solid v-shade;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+@import "../valo/valo.scss";
+
+@mixin mytheme {
+  @include valo;
+
+  // Insert your own theme rules here
+
+  /* Add some padding to the tree */
+  .v-tree {
+    padding-top: 8px;
+    padding-left: 4px;
+  }
+
+  //Tool bar CSS
+
+  .toolbar .v-button {
+    display: block;
+    background: transparent;
+    border: none;
+    //text-align: center;
+  }
+  .toolbar .v-button-wrap {
+    background: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+  }
+
+  .toolbar .v-button span {
+    //font-size: x-small;
+    text-shadow: #fafafa 1px 1px 0;
+  }
+
+  /*.toolbar .v-button img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+  }
+
+  .v-app {
+    background: #d0e2ec;
+    //font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #222;
+  }*/
+
+  .toolbar {
+    width: 100%;
+    max-height: 100px;
+    //background: #ccc url(images/gradient.png) repeat-x;
+    background-color: #ccc;
+    border-bottom: solid grey 2px;
+  }
+
+
+//  Grid CSS
+
+  .v-grid {
+    background: white;
+    .v-grid-scroller, .v-grid-scroller-horizontal { }
+    .v-grid-tablewrapper {
+      .v-grid-header {
+
+        .v-grid-row {
+
+          .v-grid-cell, .frozen, .v-grid-cell-focused {
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: #fafafa 1px 1px 0;
+          }
+        }
+      }
+      .v-grid-body {
+        .v-grid-row,
+        .v-grid-row-stripe,
+        .v-grid-row-has-data {
+          .v-grid-cell, .frozen, .v-grid-cell-focused {
+            font-size: 14px;
+            color: black;
+            font-family: "Source Sans Pro", sans-serif;
+          }
+        }
+      }
+      .v-grid-footer {
+        .v-grid-row {
+          .v-grid-cell, .frozen, .v-grid-cell-focused { }
+        }
+      }
+    }
+    .v-grid-header-deco {
+    }
+    .v-grid-footer-deco { }
+    .v-grid-horizontal-scrollbar-deco { }
+    .v-grid-editor {
+      .v-grid-editor-cells { }
+      .v-grid-editor-footer {
+        .v-grid-editor-message { }
+        .v-grid-editor-buttons {
+          .v-grid-editor-save { }
+          .v-grid-editor-cancel { }
+        }
+      }
+    }
+  }
+
+
+
+//  View CSS
+  .v-panel-caption-view {
+    color: #004b98;
+  }
+
+  .view {
+    background: white;
+  }
+
+
+}
