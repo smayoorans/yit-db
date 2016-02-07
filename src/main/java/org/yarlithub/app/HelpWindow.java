@@ -1,4 +1,4 @@
-package org.yarlithub.addressbook.ui;
+package org.yarlithub.app;
 
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Label;
@@ -18,7 +18,7 @@ public class HelpWindow extends Window {
             + " SQL commands.";
 
     public HelpWindow() {
-        setCaption("Address Book help");
+        setCaption("Yarl IT Hub, Talented's Database");
         VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         layout.setSpacing(true);

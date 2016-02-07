@@ -1,4 +1,4 @@
-package org.yarlithub.addressbook;
+package org.yarlithub.app;
 
 import com.vaadin.ui.*;
 

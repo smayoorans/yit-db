@@ -25,22 +25,21 @@ import com.vaadin.ui.*;
 import org.yarlithub.addressbook.data.DatabaseHelper;
 import org.yarlithub.addressbook.data.SearchFilter;
 import org.yarlithub.addressbook.ui.*;
+import org.yarlithub.app.HelpWindow;
 
 @SuppressWarnings("serial")
 @Title("Yarl IT Hub - Talent Database")
 @Theme("mytheme")
-@Widgetset("org.madrona.MyAppWidgetset")
+@Widgetset("org.yarlithub.MyAppWidgetset")
 public class YITApplication extends UI implements ValueChangeListener, ItemClickListener,
         QueryDelegate.RowIdChangeListener {
 
     private static final Logger logger = LoggerFactory.getLogger(YITApplication.class);
 
-    private final NavigationTree sideNavigationTree = new NavigationTree(this);
+    private final NavigationTree sideNavigationTree = new NavigationTree(null);
 
     private final Button newContact = new Button("Add Contact");
     private final Button search = new Button("Search");
-    private final Button share = new Button("Share");
-    private final Button help = new Button("Help");
 
     private final HorizontalSplitPanel mainSplit = new HorizontalSplitPanel();
 
@@ -49,8 +48,6 @@ public class YITApplication extends UI implements ValueChangeListener, ItemClick
     private SearchView searchView = null;
     private PersonList personList = null;
     private PersonForm personForm = null;
-    private HelpWindow helpWindow = null;
-    private SharingOptions sharingOptions = null;
 
     /* Helper class that creates the tables and SQLContainers. */
     private final DatabaseHelper dbHelp = new DatabaseHelper();
@@ -82,37 +79,18 @@ public class YITApplication extends UI implements ValueChangeListener, ItemClick
         HorizontalLayout toolbar = new HorizontalLayout();
         toolbar.addComponent(newContact);
         toolbar.addComponent(search);
-        toolbar.addComponent(share);
-        toolbar.addComponent(help);
 
         search.addClickListener(event -> {
             showSearchView();
             sideNavigationTree.select(NavigationTree.SEARCH);
         });
-        share.addClickListener(event -> showShareWindow());
-        help.addClickListener(event -> showHelpWindow());
         newContact.addClickListener(event -> addNewContact());
 
-//        search.setIcon(new ThemeResource("icons/32/folder-add.png"));
-//        share.setIcon(new ThemeResource("icons/32/users.png"));
         search.setIcon(FontAwesome.SEARCH);
-        share.setIcon(FontAwesome.SHARE);
-        help.setIcon(FontAwesome.FILE);
         newContact.setIcon(FontAwesome.PLUS);
-//        help.setIcon(new ThemeResource("icons/32/help.png"));
-//        newContact.setIcon(new ThemeResource("icons/32/document-add.png"));
-
         toolbar.setMargin(true);
         toolbar.setSpacing(true);
-
         toolbar.setStyleName("toolbar");
-
-        //TODO: Add later  if needed.
-        /*Embedded logo = new Embedded("", new ThemeResource("images/logo.png"));
-        toolbar.addComponent(logo);
-        toolbar.setComponentAlignment(logo, Alignment.MIDDLE_RIGHT);
-        toolbar.setExpandRatio(logo, 1);
-*/
         return toolbar;
     }
 
@@ -135,31 +113,9 @@ public class YITApplication extends UI implements ValueChangeListener, ItemClick
 
     private SearchView getSearchView() {
         if (searchView == null) {
-            searchView = new SearchView(this);
+            searchView = new SearchView(null);
         }
         return searchView;
-    }
-
-    private HelpWindow getHelpWindow() {
-        if (helpWindow == null) {
-            helpWindow = new HelpWindow();
-        }
-        return helpWindow;
-    }
-
-    private SharingOptions getSharingOptions() {
-        if (sharingOptions == null) {
-            sharingOptions = new SharingOptions();
-        }
-        return sharingOptions;
-    }
-
-    private void showHelpWindow() {
-        addWindow(getHelpWindow());
-    }
-
-    private void showShareWindow() {
-        addWindow(getSharingOptions());
     }
 
     private void showListView() {
