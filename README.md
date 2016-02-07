@@ -1,7 +1,14 @@
-vaadin-tryouts
+yit-db
 ==============
 
-Template for a simple Vaadin application that only requires a Servlet 3.0 container to run.
+yit-db provides the environment for managing talent database for Yarl IT Hub.
+This is a simple Vaadin application that only requires a Servlet 3.0 container to run.
+
+Build Requirements
+=================
+* [ JDK 8 b25 ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [ Maven 3.2.3 ](http://mirror.nus.edu.sg/apache/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.zip)
+* [ Mysql 5.6](http://dev.mysql.com/downloads/file.php?id=454837)
 
 
 Workflow
