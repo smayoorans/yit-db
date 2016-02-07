@@ -7,7 +7,6 @@ import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.filter.Compare;
 import com.vaadin.data.util.filter.Like;
 import com.vaadin.data.util.filter.Or;
-import com.vaadin.data.util.sqlcontainer.SQLContainer;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
@@ -21,9 +20,9 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
 
     public static final Logger logger = LoggerFactory.getLogger(AddressBookMainView.class);
 
-    public static final String[] COL_HEADERS_ENGLISH = new String[]{"First name", "Last name", "Phone Number", "Email", "Profession", "Affiliation"};
+    public static final String[] COL_HEADERS_ENGLISH = new String[]{"Full Name", "Phone Number", "Email", "Profession", "Affiliation"};
 
-    public static final Object[] NATURAL_COLUMNS = new Object[]{"firstName", "lastName", "phoneNumber", "email", "profession", "affiliation"};
+    public static final Object[] NATURAL_COLUMNS = new Object[]{"fullName", "phoneNumber", "email", "profession", "affiliation"};
 
     private Grid personTable;
     private JPAContainer<Person> persons;
@@ -34,6 +33,7 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
     private final Button help = new Button("Help");
 
     private final HorizontalSplitPanel horizontalSplit = new HorizontalSplitPanel();
+    VerticalLayout gridView = new VerticalLayout();
 
     private final NavigationTree sideNavigationTree = new NavigationTree(this);
     private HelpWindow helpWindow = null;
@@ -67,7 +67,6 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
         setExpandRatio(horizontalSplit, 1);
 
         horizontalSplit.setSplitPosition(100, Unit.PERCENTAGE);
-        VerticalLayout gridView = new VerticalLayout();
         horizontalSplit.setFirstComponent(gridView);
 
         personTable = new Grid(persons);
@@ -110,6 +109,8 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
         });
 
         edit.addClickListener(event -> {
+            horizontalSplit.setSplitPosition(420, Unit.PIXELS);
+            horizontalSplit.setSecondComponent(gridView);
             Object selectedRow = personTable.getSelectedRow();
             horizontalSplit.setFirstComponent(new PersonEditor(personTable.getContainerDataSource().getItem(selectedRow)));
         });
@@ -142,26 +143,22 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
                 if (NavigationTree.SHOW_ALL.equals(itemId)) {
                     /* Clear all filters from person container */
                     persons.removeAllContainerFilters();
-                    horizontalSplit.setSplitPosition(10, Unit.PIXELS);
-//                    horizontalSplit.setSecondComponent(searchView);
-                    horizontalSplit.setFirstComponent(personTable);
-//                    sideNavigationTree.select(NavigationTree.SEARCH);
-//                    showListView();
+                    horizontalSplit.setSplitPosition(420, Unit.PIXELS);
+                    horizontalSplit.setSecondComponent(gridView);
                 } else if (NavigationTree.SEARCH.equals(itemId)) {
-//                    showSearchView();
                     if (searchView == null) {
                         searchView = new SearchView(this);
                     }
+                    sideNavigationTree.select(NavigationTree.SEARCH);
                     horizontalSplit.setSplitPosition(420, Unit.PIXELS);
                     horizontalSplit.setSecondComponent(searchView);
-                    horizontalSplit.setFirstComponent(sideNavigationTree);
-                    sideNavigationTree.select(NavigationTree.SEARCH);
                 } else if (itemId instanceof SearchFilter[]) {
                     search((SearchFilter[]) itemId);
                 }
             }
         }
     }
+
     public void search(SearchFilter... searchFilters) {
         if (searchFilters.length == 0) {
             return;
@@ -176,21 +173,21 @@ public class AddressBookMainView extends VerticalLayout implements ComponentCont
         for (SearchFilter searchFilter : searchFilters) {
             if (Integer.class.equals(persons.getType(searchFilter.getPropertyId()))) {
                 try {
-                    filters[ix] = new Compare.Equal(searchFilter.getPropertyId(),
-                            Integer.parseInt(searchFilter.getTerm()));
+                    filters[ix] = new Compare.Equal(searchFilter.getPropertyId(), Integer.parseInt(searchFilter.getTerm()));
                 } catch (NumberFormatException nfe) {
                     Notification.show("Invalid search term!");
                     return;
                 }
             } else {
-                filters[ix] = new Like((String) searchFilter.getPropertyId(),
-                        "%" + searchFilter.getTerm() + "%");
+                filters[ix] = new Like((String) searchFilter.getPropertyId(), "%" + searchFilter.getTerm() + "%");
             }
             ix++;
         }
         /* Add the filter(s) to the person container. */
         persons.addContainerFilter(new Or(filters));
-        horizontalSplit.setFirstComponent(personTable);
+
+        sideNavigationTree.select(NavigationTree.SEARCH);
+        horizontalSplit.setSecondComponent(gridView);
 
         Notification.show(
                 "Searched for:<br/> "

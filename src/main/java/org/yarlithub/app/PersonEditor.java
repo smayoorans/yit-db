@@ -34,6 +34,15 @@ public class PersonEditor extends VerticalLayout {
             try {
                 binder.commit();
                 fireEvent(new EditorSavedEvent(form, personItem));
+                HorizontalSplitPanel parent = (HorizontalSplitPanel) this.getParent();
+                parent.setSplitPosition(0, Unit.PERCENTAGE);
+                Notification.show(
+                        "Changes Saved for:<br/> "
+                                + "Full Name " + " = *"
+                                + personItem.getItemProperty("fullName")
+                                + "*<br/>.",
+                        Notification.Type.TRAY_NOTIFICATION);
+
             } catch (FieldGroup.CommitException e) {
                 e.printStackTrace();
             }
@@ -46,15 +55,19 @@ public class PersonEditor extends VerticalLayout {
             binder.discard();
             HorizontalSplitPanel parent = (HorizontalSplitPanel) this.getParent();
             parent.setSplitPosition(0, Unit.PERCENTAGE);
+            Notification.show(
+                    "Changes Discarded for:<br/> "
+                            + "Full Name" + " = *"
+                            + personItem.getItemProperty("fullName")
+                            + "*<br/>.",
+                    Notification.Type.TRAY_NOTIFICATION);
         });
 
         setCaption(buildCaption());
 
 
-        TextField firstName = new TextField("First Name");
-        firstName.setNullRepresentation("");
-        TextField lastName = new TextField("Last Name");
-        lastName.setNullRepresentation("");
+        TextField fullName = new TextField("Full Name");
+        fullName.setNullRepresentation("");
         TextField phoneNumber = new TextField("Phone Number");
         phoneNumber.setNullRepresentation("");
         TextArea address = new TextArea("Address");
@@ -68,8 +81,7 @@ public class PersonEditor extends VerticalLayout {
         TextArea description = new TextArea("Description");
         description.setNullRepresentation("");
 
-        binder.bind(firstName, "firstName");
-        binder.bind(lastName, "lastName");
+        binder.bind(fullName, "fullName");
         binder.bind(phoneNumber, "phoneNumber");
         binder.bind(address, "address");
         binder.bind(email, "email");
@@ -77,17 +89,16 @@ public class PersonEditor extends VerticalLayout {
         binder.bind(affiliation, "affiliation");
         binder.bind(description, "description");
 
-        firstName.addValidator(new BeanValidator(Person.class, "firstName"));
-        lastName.addValidator(new BeanValidator(Person.class, "lastName"));
+        fullName.addValidator(new BeanValidator(Person.class, "fullName"));
         email.addValidator(new BeanValidator(Person.class, "email"));
 
-        form.addComponents(firstName, lastName, phoneNumber, email, profession, address, affiliation, description);
+        form.addComponents(fullName, phoneNumber, email, profession, address, affiliation, description);
 
         HorizontalLayout footer = new HorizontalLayout(saveButton, cancelButton);
         footer.setSpacing(true);
         footer.setMargin(true);
         form.addComponent(footer);
-        UI.getCurrent().setFocusedComponent(firstName);
+        UI.getCurrent().setFocusedComponent(fullName);
 
         addComponent(form);
     }
@@ -96,9 +107,7 @@ public class PersonEditor extends VerticalLayout {
      * @return the caption of the editor window
      */
     private String buildCaption() {
-        return String.format("%s %s",
-                personItem.getItemProperty("firstName").getValue(),
-                personItem.getItemProperty("lastName").getValue());
+        return String.format("%s", personItem.getItemProperty("fullName").getValue());
     }
 
     // Adding new Listener method

@@ -32,11 +32,8 @@ public class Person {
     private Long id;
 
     @NotNull
-    @Size(min = 2, max = 24)
-    private String firstName;
-
-    @Size(min = 2, max = 24)
-    private String lastName;
+    @Size(min = 2, max = 100)
+    private String fullName;
 
     private String address;
 
@@ -59,20 +56,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String firstName) {
+        this.fullName = firstName;
     }
 
     public String getAddress() {
@@ -127,8 +116,7 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstName='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

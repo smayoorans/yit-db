@@ -106,6 +106,39 @@ $v-panel-border: 2px solid v-shade;
   }
 
 
+  .v-textfield {
+    width: 230px;
+  }
+
+  .v-textarea {
+    width: 230px;
+  }
+
+//  FormLayout CSS
+  .v-formlayout {}
+  .v-formlayout .v-caption {}
+
+  /* Columns in a field row. */
+  .v-formlayout-contentcell {} /* Field content. */
+  .v-formlayout-captioncell {} /* Field caption. */
+  .v-formlayout-errorcell {}   /* Field error indicator. */
+
+  /* Overall style of field rows. */
+  .v-formlayout-row {
+
+  }
+  .v-formlayout-firstrow {}
+  .v-formlayout-lastrow {}
+
+  /* Required field indicator. */
+  .v-formlayout .v-required-field-indicator {}
+  .v-formlayout-captioncell .v-caption
+  .v-required-field-indicator {}
+
+  /* Error indicator. */
+  .v-formlayout-cell .v-errorindicator {}
+  .v-formlayout-error-indicator .v-errorindicator {}
+
 //  Grid CSS
 
   .v-grid {
@@ -128,9 +161,9 @@ $v-panel-border: 2px solid v-shade;
         .v-grid-row-stripe,
         .v-grid-row-has-data {
           .v-grid-cell, .frozen, .v-grid-cell-focused {
-            font-size: 14px;
+            font-size: 13px;
             color: black;
-            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 400;
           }
         }
       }
