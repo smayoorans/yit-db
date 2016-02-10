@@ -2,7 +2,6 @@ package org.yarlithub.ui;
 
 
 import com.vaadin.ui.Tree;
-import org.yarlithub.app.MainAppView;
 
 @SuppressWarnings("serial")
 public class NavigationTree extends Tree {

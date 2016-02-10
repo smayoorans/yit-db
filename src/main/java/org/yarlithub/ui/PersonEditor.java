@@ -93,6 +93,7 @@ public class PersonEditor extends VerticalLayout {
         binder.bind(joinedDate, "joinedDate");
 
         fullName.addValidator(new BeanValidator(Person.class, "fullName"));
+        phoneNumber.addValidator(new BeanValidator(Person.class, "phoneNumber"));
         email.addValidator(new BeanValidator(Person.class, "email"));
 
         form.addComponents(fullName, phoneNumber, email, profession, affiliation, joinedDate, address, description);

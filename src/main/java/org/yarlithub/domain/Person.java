@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -38,6 +39,7 @@ public class Person implements Serializable {
 
     private String address;
 
+    @Pattern(regexp="(^$|[0-9]{10})" , message = "Your phone number should be length of 10 digits.")
     private String phoneNumber;
 
     @Email

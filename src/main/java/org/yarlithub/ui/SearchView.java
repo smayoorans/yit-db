@@ -5,7 +5,6 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.yarlithub.domain.SearchFilter;
-import org.yarlithub.app.MainAppView;
 
 import java.util.ArrayList;
 import java.util.List;

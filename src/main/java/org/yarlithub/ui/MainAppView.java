@@ -1,4 +1,4 @@
-package org.yarlithub.app;
+package org.yarlithub.ui;
 
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
@@ -12,13 +12,10 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
+import org.vaadin.dialogs.ConfirmDialog;
 import org.yarlithub.RootUI;
 import org.yarlithub.domain.Person;
 import org.yarlithub.domain.SearchFilter;
-import org.yarlithub.ui.HelpWindow;
-import org.yarlithub.ui.NavigationTree;
-import org.yarlithub.ui.PersonEditor;
-import org.yarlithub.ui.SearchView;
 
 public class MainAppView extends VerticalLayout implements ComponentContainer, ItemClickEvent.ItemClickListener {
 
@@ -120,7 +117,19 @@ public class MainAppView extends VerticalLayout implements ComponentContainer, I
             horizontalSplit.setFirstComponent(new PersonEditor(personTable.getContainerDataSource().getItem(selectedRow)));
         });
 
-        delete.addClickListener(event -> persons.removeItem(personTable.getSelectedRow()));
+        delete.addClickListener(event -> {
+            // The quickest way to confirm
+            ConfirmDialog.show(UI.getCurrent(), "Delete Contact", "Are you sure that you want to delete the contact?", "Yes", "No",
+                    dialog -> {
+                        if (dialog.isConfirmed()) {
+                            // Confirmed to continue
+                            persons.removeItem(personTable.getSelectedRow());
+                        } else {
+                            // User did not confirm
+                            System.out.println("Not Confirm");
+                        }
+                    });
+        });
 
         help.addClickListener(event -> {
             if (helpWindow == null) {
