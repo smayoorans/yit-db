@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.yarlithub.app;
+package org.yarlithub;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -22,6 +22,7 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import org.yarlithub.app.MainAppView;
 import org.yarlithub.domain.Person;
 
 import javax.persistence.EntityManager;

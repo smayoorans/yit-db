@@ -12,6 +12,7 @@ import com.vaadin.external.org.slf4j.Logger;
 import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
+import org.yarlithub.RootUI;
 import org.yarlithub.domain.Person;
 import org.yarlithub.domain.SearchFilter;
 import org.yarlithub.ui.HelpWindow;
@@ -43,6 +44,7 @@ public class MainAppView extends VerticalLayout implements ComponentContainer, I
     private SearchView searchView = null;
 
     public MainAppView() {
+        logger.info("Initializing main component");
         persons = JPAContainerFactory.make(Person.class, RootUI.PERSISTENCE_UNIT);
         buildMainArea();
     }

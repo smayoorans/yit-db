@@ -20,10 +20,13 @@ import org.hibernate.validator.constraints.Email;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Person {
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 8423319659635010922L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
