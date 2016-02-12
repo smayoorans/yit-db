@@ -38,10 +38,7 @@ public class PersonEditor extends VerticalLayout {
                 HorizontalSplitPanel parent = (HorizontalSplitPanel) this.getParent();
                 parent.setSplitPosition(0, Unit.PERCENTAGE);
                 Notification.show(
-                        "Changes Saved for:<br/> "
-                                + "Full Name " + " = *"
-                                + personItem.getItemProperty("fullName").getValue()
-                                + "*<br/>.",
+                        "Changes Saved for: " + personItem.getItemProperty("fullName").getValue() + ".",
                         Notification.Type.TRAY_NOTIFICATION);
 
             } catch (FieldGroup.CommitException e) {
@@ -57,11 +54,8 @@ public class PersonEditor extends VerticalLayout {
             HorizontalSplitPanel parent = (HorizontalSplitPanel) this.getParent();
             parent.setSplitPosition(0, Unit.PERCENTAGE);
             Notification.show(
-                    "Changes Discarded for:<br/> "
-                            + "Full Name" + " = *"
-                            + personItem.getItemProperty("fullName").getValue()
-                            + "*<br/>.",
-                    Notification.Type.TRAY_NOTIFICATION);
+                    "Changes Discarded for:" + personItem.getItemProperty("fullName").getValue() + ".",
+                    Notification.Type.WARNING_MESSAGE);
         });
 
         setCaption(buildCaption());

@@ -15,6 +15,8 @@
  */
 package org.yarlithub;
 
+import com.ejt.vaadin.loginform.DefaultVerticalLoginForm;
+import com.ejt.vaadin.loginform.LoginForm;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -22,6 +24,7 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import org.yarlithub.login.SimpleLoginUI;
 import org.yarlithub.ui.MainAppView;
 
 import javax.servlet.annotation.WebServlet;
@@ -35,11 +38,26 @@ public class RootUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-        setContent(new MainAppView());
+
+        DefaultVerticalLoginForm loginForm = new DefaultVerticalLoginForm();
+        loginForm.addLoginListener(new LoginForm.LoginListener() {
+            @Override
+            public void onLogin(LoginForm.LoginEvent loginEvent) {
+
+            }
+        });
+        loginForm.addLoginListener((LoginForm.LoginListener) event -> {
+
+            System.err.println("Logged in with user name " + event.getUserName() + " and password of length " + event.getPassword().length());
+            setContent(new MainAppView());
+
+        });
+
+        setContent(loginForm);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = RootUI.class, productionMode = false)
+    @VaadinServletConfiguration(ui = SimpleLoginUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
 
     }

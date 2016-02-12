@@ -25,33 +25,43 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name = "Person")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 8423319659635010922L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @NotNull
     @Size(min = 2, max = 100)
+    @Column(name = "fullName")
     private String fullName;
 
+    @Column(name = "address")
     private String address;
 
     @Pattern(regexp="(^$|[0-9]{10})" , message = "Your phone number should be length of 10 digits.")
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
     @Email
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "profession")
     private String profession;
 
+    @Column(name = "affiliation")
     private String affiliation;
 
+    @Column(name = "description")
     private String description;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "joinedDate")
     private Date joinedDate;
 
     public Long getId() {
