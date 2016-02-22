@@ -2,10 +2,12 @@ package org.yarlithub.login;
 
 import com.vaadin.data.validator.AbstractValidator;
 import com.vaadin.data.validator.EmailValidator;
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 
 public class SimpleLoginView extends CustomComponent implements View, Button.ClickListener {
 
@@ -25,8 +27,7 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
         user.setWidth("300px");
         user.setRequired(true);
         user.setInputPrompt("Your username (eg. joe@email.com)");
-        user.addValidator(new EmailValidator(
-                "Username must be an email address"));
+        user.addValidator(new EmailValidator("Username must be an email address"));
         user.setInvalidAllowed(false);
 
         // Create the password input field
@@ -39,10 +40,13 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
 
         // Create login button
         loginButton = new Button("Login", this);
+        loginButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+        loginButton.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
         // Add both to a panel
-        VerticalLayout fields = new VerticalLayout(user, password, loginButton);
-        fields.setCaption("Please login to access the application. (test@test.com/passw0rd)");
+        Label caption = new Label("Please login to access the application.");
+        caption.setStyleName(ValoTheme.LABEL_H2);
+        VerticalLayout fields = new VerticalLayout(caption, user, password, loginButton);
         fields.setSpacing(true);
         fields.setMargin(new MarginInfo(true, true, true, false));
         fields.setSizeUndefined();
@@ -51,7 +55,6 @@ public class SimpleLoginView extends CustomComponent implements View, Button.Cli
         VerticalLayout viewLayout = new VerticalLayout(fields);
         viewLayout.setSizeFull();
         viewLayout.setComponentAlignment(fields, Alignment.MIDDLE_CENTER);
-//        viewLayout.setStyleName();
         setCompositionRoot(viewLayout);
     }
 

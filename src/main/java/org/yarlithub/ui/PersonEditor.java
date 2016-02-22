@@ -12,6 +12,7 @@ import org.yarlithub.domain.Person;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 public class PersonEditor extends VerticalLayout {
@@ -71,11 +72,16 @@ public class PersonEditor extends VerticalLayout {
         email.setNullRepresentation("");
         TextField profession = new TextField("Profession");
         profession.setNullRepresentation("");
+
+        OptionGroup gender = new OptionGroup("Gender");
+        gender.addItems("Male", "Female");
+
         TextField affiliation = new TextField("Affiliation");
         affiliation.setNullRepresentation("");
         TextArea description = new TextArea("Description");
         description.setNullRepresentation("");
         DateField joinedDate = new DateField("Joined Date");
+        joinedDate.setValue(new Date());
 
         binder.bind(fullName, "fullName");
         binder.bind(phoneNumber, "phoneNumber");
@@ -85,12 +91,13 @@ public class PersonEditor extends VerticalLayout {
         binder.bind(affiliation, "affiliation");
         binder.bind(description, "description");
         binder.bind(joinedDate, "joinedDate");
+        binder.bind(gender, "gender");
 
         fullName.addValidator(new BeanValidator(Person.class, "fullName"));
         phoneNumber.addValidator(new BeanValidator(Person.class, "phoneNumber"));
         email.addValidator(new BeanValidator(Person.class, "email"));
 
-        form.addComponents(fullName, phoneNumber, email, profession, affiliation, joinedDate, address, description);
+        form.addComponents(fullName, phoneNumber, email, profession, gender, affiliation, joinedDate, address, description);
 
         HorizontalLayout footer = new HorizontalLayout(saveButton, cancelButton);
         footer.setSpacing(true);

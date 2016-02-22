@@ -195,6 +195,22 @@ $v-panel-border: 2px solid v-shade;
   }
 
 
+  /* Lay the options horizontally */
+  .v-select-optiongroup-horizontal .v-select-option {
+    display: inline-block;
+  }
+
+  /* Avoid wrapping if the layout is too tight */
+  .v-select-optiongroup-horizontal {
+    white-space: nowrap;
+  }
+
+  /* Some extra spacing is needed */
+  .v-select-optiongroup-horizontal
+  .v-select-option.v-radiobutton {
+    padding-right: 10px;
+  }
+
 
 //  View CSS
   .v-panel-caption-view {
