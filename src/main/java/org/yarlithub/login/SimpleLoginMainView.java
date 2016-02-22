@@ -6,6 +6,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
+import org.yarlithub.ui.MainAppView;
 
 public class SimpleLoginMainView extends CustomComponent implements View {
 
@@ -13,21 +14,17 @@ public class SimpleLoginMainView extends CustomComponent implements View {
 
     Label text = new Label();
 
-    Button logout = new Button("Logout", new Button.ClickListener() {
+    Button logout = new Button("Logout", (Button.ClickListener) event -> {
 
-        @Override
-        public void buttonClick(Button.ClickEvent event) {
+        // "Logout" the user
+        getSession().setAttribute("user", null);
 
-            // "Logout" the user
-            getSession().setAttribute("user", null);
-
-            // Refresh this view, should redirect to login view
-            getUI().getNavigator().navigateTo(NAME);
-        }
+        // Refresh this view, should redirect to login view
+        getUI().getNavigator().navigateTo(NAME);
     });
 
     public SimpleLoginMainView() {
-        setCompositionRoot(new CssLayout(text, logout));
+        setCompositionRoot(new MainAppView());
     }
 
     @Override

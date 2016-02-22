@@ -1,16 +1,13 @@
 package org.yarlithub.login;
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.data.validator.AbstractValidator;
 import com.vaadin.data.validator.EmailValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
-public class SimpleLoginView extends CustomComponent implements View,
-        Button.ClickListener {
+public class SimpleLoginView extends CustomComponent implements View, Button.ClickListener {
 
     public static final String NAME = "login";
 

@@ -15,8 +15,7 @@
  */
 package org.yarlithub;
 
-import com.ejt.vaadin.loginform.DefaultVerticalLoginForm;
-import com.ejt.vaadin.loginform.LoginForm;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -39,21 +38,8 @@ public class RootUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
 
-        DefaultVerticalLoginForm loginForm = new DefaultVerticalLoginForm();
-        loginForm.addLoginListener(new LoginForm.LoginListener() {
-            @Override
-            public void onLogin(LoginForm.LoginEvent loginEvent) {
+        setContent(new MainAppView());
 
-            }
-        });
-        loginForm.addLoginListener((LoginForm.LoginListener) event -> {
-
-            System.err.println("Logged in with user name " + event.getUserName() + " and password of length " + event.getPassword().length());
-            setContent(new MainAppView());
-
-        });
-
-        setContent(loginForm);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
